@@ -51,3 +51,7 @@ python garmin_token.py
 
 Bump `__version__` in `garmin_token.py` (and the `garminconnect` version in `requirements.txt` if needed), then push a
 tag: `git tag v1.0.1 && git push origin v1.0.1`. GitHub Actions builds the binaries and publishes the release.
+
+## License
+
+[MIT](LICENSE). python-garminconnect, which does the sign-in, is MIT-licensed too.
