@@ -12,6 +12,8 @@ Garmin section of the profile page in [fitness](https://github.com/kobyzskyi/fit
 
 ## Download
 
+**Desktop only:** Windows, macOS or Linux. There is no version for phones or tablets — run it on a computer.
+
 From the [latest release](https://github.com/kobyzskyi/garmin-token/releases/latest), take the file for your system:
 
 | System | File |
