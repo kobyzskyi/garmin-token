@@ -1,0 +1,6 @@
+*.token.json
+dist/
+build/
+*.spec
+__pycache__/
+.venv/
