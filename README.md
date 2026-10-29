@@ -49,8 +49,9 @@ python garmin_token.py
 
 ## Releasing
 
-Bump `__version__` in `garmin_token.py` (and the `garminconnect` version in `requirements.txt` if needed), then push a
-tag: `git tag v1.0.1 && git push origin v1.0.1`. GitHub Actions builds the binaries and publishes the release.
+Bump `__version__` in `garmin_token.py` (and the `garminconnect` version in `requirements.txt` if needed) and merge to
+`main`. Then either run the workflow manually (Actions → build → Run workflow, version `v1.0.1`) or push a tag
+(`git tag v1.0.1 && git push origin v1.0.1`). GitHub Actions builds the binaries and publishes the release.
 
 ## License
 
