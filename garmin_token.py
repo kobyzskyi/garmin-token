@@ -52,6 +52,10 @@ if __name__ == "__main__":
     except (KeyboardInterrupt, EOFError):
         print("\nCancelled.", file=sys.stderr)
         code = 130
-    if getattr(sys, "frozen", False) and sys.platform == "win32":
-        input("\nPress Enter to close this window...")  # started by a double click: keep the window open to read the result
+    # started by a double click on Windows: keep the window open to read the result (not for --version, not without a console)
+    if getattr(sys, "frozen", False) and sys.platform == "win32" and len(sys.argv) == 1 and sys.stdin and sys.stdin.isatty():
+        try:
+            input("\nPress Enter to close this window...")
+        except (EOFError, KeyboardInterrupt):
+            pass
     sys.exit(code)
