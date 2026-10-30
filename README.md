@@ -25,15 +25,30 @@ From the [latest release](https://github.com/kobyzskyi/garmin-token/releases/lat
 
 ## Usage
 
-1. Download the file and run it.
-   - **Windows:** double-click it. If you see "Windows protected your PC", choose "More info" → "Run anyway"
-     (the program is not code-signed).
-   - **macOS:** in Terminal run `chmod +x ~/Downloads/garmin-token-macos-*` and
-     `xattr -d com.apple.quarantine ~/Downloads/garmin-token-macos-*`, then start the file from Terminal.
-   - **Linux:** `chmod +x garmin-token-linux-x64 && ./garmin-token-linux-x64`.
+1. Get the program and run it.
+   - **macOS:** open Terminal (Applications → Utilities) and paste this command. It downloads the build for your Mac
+     (Apple Silicon or Intel) into your home folder and starts it:
+
+     ```
+     cd ~ && curl -fLo garmin-token "https://github.com/kobyzskyi/garmin-token/releases/latest/download/garmin-token-macos-$(uname -m | sed s/x86_64/x64/)" && chmod +x garmin-token && ./garmin-token
+     ```
+
+     Don't download it with the browser: the program is not signed by Apple, and macOS refuses to open a downloaded
+     file with "Apple could not verify … is free of malware". A file fetched by `curl` isn't quarantined, so macOS
+     runs it. Already downloaded it with the browser? Run
+     `xattr -d com.apple.quarantine ~/Downloads/garmin-token-macos-*` and `chmod +x ~/Downloads/garmin-token-macos-*`,
+     then start it from Terminal — or allow it in System Settings → Privacy & Security → "Open Anyway".
+   - **Windows:** download `garmin-token-windows-x64.exe` and double-click it. If you see "Windows protected your PC",
+     choose "More info" → "Run anyway" (the program is not code-signed).
+   - **Linux:**
+
+     ```
+     cd ~ && curl -fLo garmin-token https://github.com/kobyzskyi/garmin-token/releases/latest/download/garmin-token-linux-x64 && chmod +x garmin-token && ./garmin-token
+     ```
 2. Enter your Garmin Connect email and password, then the MFA code if MFA is on.
 3. `garmin.token.json` appears in the current directory. Upload it to your app.
 4. **Delete the file.** The app refreshes the token by itself; a copy on disk is access to your Garmin account.
+   On macOS and Linux (run from your home folder as above): `rm ~/garmin.token.json ~/garmin-token`.
 
 If the app later says the Garmin token has expired (for example after you changed your Garmin password), repeat these steps.
 
